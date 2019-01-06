@@ -7,19 +7,19 @@ int main (int argc, char* argv[]) {
     return 1;
   }
 
-  GR gr; //Crear gramatica regular
-
   bool errorApertura = false;
 
   //Generamos la gramatica
   cout << "Generamos la gramatica...\n";
-  gr.gen_GR(argv[1],errorApertura);
+  GR gr(argv[1], errorApertura);
   if (errorApertura) return 1;
 
   //Exportamos a fichero
-  cout << "Exportando a fichero " << argv[2] << " los resultados...\n";
-  gr.export_to(argv[2],errorApertura);
-  if (errorApertura) return 2;
+  cout << "Eliminando producciones vacias...\n";
+  gr.delete_empty_productions();
+
+  cout << "Eliminando producciones unitarias...\n";
+  gr.delete_unit_productions();
 
   cout << "Finalizado con exito.\n";
 }

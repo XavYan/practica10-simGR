@@ -1,0 +1,12 @@
+2
+a b 
+8
+S A B C D E F G 
+S -> aA | bE
+A -> aF | bB
+B -> aS | bB | ~
+C -> aB | bF
+D -> aG | bE
+E -> aB | bF
+F -> aB | bD
+G -> aF | bB
