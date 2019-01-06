@@ -193,35 +193,44 @@ void GR::delete_unit_productions (void) {
       }
     }
   }
-
-  for (int i = 0; i < P_.size(); i++) {
-    set<std::string> set_str;
+  //Eliminamos las producciones unitarias
+  for (int i = 0; i < P_.size(); i++) { //Para cada prototipo
     for (std::string str : get<1>(P_[i])) {
-      if (str.length() > 1) {
-        set_str.insert(str);
-        continue;
-      }
-      if (H.find(str[0]) != H.end()) continue;
-      set_str.insert(str);
+      if (str.length() > 1) continue;
+      get<1>(P_[i]).erase(str);
     }
   }
 
-  for (int i = 0; i < P_.size(); i++) {
-    set<std::string> set_str = get<1>(P_[i]);
+  for (int i = 0; i < P_.size(); i++) { //Para cada prototipo...
     for (pair<char,char> pair : H) {
-      if (get<1>(pair) != get<0>(P_[i])) continue;
-      for (int j = 0; j < get<1>(P_[i]); j++) {
-        if (get<0>(P_[j]) == get<1>(pair)) {
-          
+      if (get<1>(pair) != get<0>(P_[i])) continue; //Buscamos el par que se relacione con mi simbolo no terminal
+      for (int j = 0; j < get<1>(P_[i]).size(); j++) {
+        if (get<0>(P_[j]) == get<0>(pair)) { //Si este es el prototipo al otro lado del par
+          saux = get<0>(P_[j]);
+          set_str = get<1>(P_[j]);
+          break; //Ya no necesitamos buscar mas
         }
       }
+      break;
+    }
+
+    //Insertamos los elementos del prototipo
+    if (saux != "!") {
+      for (std::string str : set_str) {
+        get<1>(P_[i]).insert(str);
+      }
+      get<1>(P_[i]).erase(saux); //Borramos el elemento unitario
     }
   }
 
   //Mostramos los pares elegidos
+  std::cout << "Producciones unitarias: ";
   for (pair<char,char> pair : H) {
     std::cout << "(" << get<0>(pair) << "," << get<1>(pair) << ")\n";
   }
+
+  //Mostramos el gr resultante
+  write(std::cout);
 }
 
 void GR::delete_empty_productions (void) {
