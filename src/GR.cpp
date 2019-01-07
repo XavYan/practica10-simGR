@@ -193,44 +193,38 @@ void GR::delete_unit_productions (void) {
       }
     }
   }
+
   //Eliminamos las producciones unitarias
-  for (int i = 0; i < P_.size(); i++) { //Para cada prototipo
-    for (std::string str : get<1>(P_[i])) {
-      if (str.length() > 1) continue;
-      get<1>(P_[i]).erase(str);
-    }
-  }
-
-  for (int i = 0; i < P_.size(); i++) { //Para cada prototipo...
-    for (pair<char,char> pair : H) {
-      if (get<1>(pair) != get<0>(P_[i])) continue; //Buscamos el par que se relacione con mi simbolo no terminal
-      for (int j = 0; j < get<1>(P_[i]).size(); j++) {
-        if (get<0>(P_[j]) == get<0>(pair)) { //Si este es el prototipo al otro lado del par
-          saux = get<0>(P_[j]);
-          set_str = get<1>(P_[j]);
-          break; //Ya no necesitamos buscar mas
-        }
-      }
-      break;
-    }
-
-    //Insertamos los elementos del prototipo
-    if (saux != "!") {
-      for (std::string str : set_str) {
-        get<1>(P_[i]).insert(str);
-      }
-      get<1>(P_[i]).erase(saux); //Borramos el elemento unitario
-    }
-  }
-
-  //Mostramos los pares elegidos
-  std::cout << "Producciones unitarias: ";
   for (pair<char,char> pair : H) {
-    std::cout << "(" << get<0>(pair) << "," << get<1>(pair) << ")\n";
+    for (int i = 0; i < P_.size(); i++) {
+      if (get<0>(P_[i]) == get<0>(pair)) {
+        for (std::string str : get<1>(P_[i])) {
+          if (str[0] == get<1>(pair)) {
+            get<1>(P_[i]).erase(str);
+            break;
+          }
+        }
+        break;
+      }
+    }
   }
 
-  //Mostramos el gr resultante
-  write(std::cout);
+  //Modificamos los prototipos resultantes
+  vector<pair<char,set<std::string> > > last_P;
+  last_P = P_;
+  for (int i = 0; i < P_.size(); i++) {
+    set<std::string> set_str = get<1>(P_[i]);
+    for (pair<char,char> pair : H) {
+      if (get<0>(pair) != get<0>(P_[i])) continue;
+      for (int j = 0; j < P_.size(); j++) {
+        if (get<0>(P_[j]) != get<1>(pair)) continue;
+        for (std::string str : get<1>(P_[j])) {
+          get<1>(P_[i]).insert(str);
+        }
+        break;
+      }
+    }
+  }
 }
 
 void GR::delete_empty_productions (void) {
@@ -279,8 +273,83 @@ void GR::delete_empty_productions (void) {
   }
   //Insertamos la cadena vacia si '~' pertenece a L(G)
   if (H.find('S') != H.end()) get<1>(P_[0]).insert(std::string("~"));
+}
 
-  //Mostramos el conjunto resultante
+void GR::delete_useless_elements (void) {
+  set<char> V;
+  for (int i = 0; i < P_.size(); i++) {
+    if (get<1>(P_[i]).empty()) continue;
+    bool valid;
+    for (std::string str : get<1>(P_[i])) {
+      valid = true;
+      for (int k = 0; k < str.length(); k++) {
+        if (V_.find(str[k]) != V_.end()) {
+          valid = false;
+          break;
+        }
+      }
+      if (valid) break;
+    }
+    if (valid) V.insert(get<0>(P_[i]));
+  }
+
+  set<char> last_V;
+  while (last_V != V) {
+    last_V = V;
+    for (int i = 0; i < P_.size(); i++) {
+      if (get<1>(P_[i]).empty()) continue;
+      bool valid;
+      for (std::string str : get<1>(P_[i])) {
+        valid = true;
+        for (int k = 0; k < str.length(); k++) {
+          if (V_.find(str[k]) != V_.end()) {
+            if (V.find(str[k]) == V.end()) {
+              std::cout << "No es valida la produccion " << str << "\n";
+              valid = false;
+              break;
+            }
+          }
+        }
+        if (valid) break;
+      }
+      if (valid) V.insert(get<0>(P_[i]));
+    }
+  }
+
+  //Eliminamos los simbolos no terminales que no pertenezcan a V
+  for (char c : V_) {
+    if (V.find(c) == V.end()) V_.erase(c);
+  }
+
+  //Eliminamos los prototipos que incluyan algun elemento de los eliminados
+  for (int i = 0; i < P_.size(); i++) {
+    for (std::string str : get<1>(P_[i])) {
+      for (int k = 0; k < str.length(); k++) {
+        if (V_.find(str[k]) == V_.end() && alphabet_.find(str[k]) == alphabet_.end()) {
+          get<1>(P_[i]).erase(str);
+          break;
+        }
+      }
+    }
+  }
+
+  //Mostramos los elementos de V tras la etapa 1
+  std::cout << "Tras la etapa 1:\n";
+  int cont = 0;
+  for (char c : V) {
+    std::cout << c << (++cont < V.size() ? "," : "");
+  }
+  std::cout << "\n";
+
+  //Mostramos los elementos de V tras la etapa 2
+  /*std::cout << "Tras la etapa 2:\n";
+  cont = 0;
+  for (char c : V) {
+    std::cout << c << (++cont < V.size() ? "," : "");
+  }
+  std::cout << "\n";*/
+
+  //Mostramos el resultado
   write(std::cout);
 }
 

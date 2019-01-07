@@ -72,6 +72,12 @@ public:
 
  void delete_unit_productions (void);
 
+/**
+ * @brief Elimina las producciones y variables inutiles
+ */
+
+ void delete_useless_elements (void);
+
  /**
   * @brief Devuelve el alfabeto de la gramatica
   * @return Alfabeto de la gramatica

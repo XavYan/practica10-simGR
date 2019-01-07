@@ -14,7 +14,10 @@ int main (int argc, char* argv[]) {
   GR gr(argv[1], errorApertura);
   if (errorApertura) return 1;
 
-  //Exportamos a fichero
+  //Simplificamos
+  cout << "Eliminando producciones y variables inutiles...\n";
+  gr.delete_useless_elements();
+  
   cout << "Eliminando producciones vacias...\n";
   gr.delete_empty_productions();
 

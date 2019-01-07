@@ -1,0 +1,9 @@
+3
+a b d
+5
+S B A C D
+S -> Aa|B|D
+B -> b
+A -> aA|bA|B
+C -> abd
+D ->
