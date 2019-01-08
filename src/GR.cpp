@@ -140,30 +140,13 @@ void GR::export_to (const char* nombreFichero, bool& errorApertura) {
   fich << "\n";
 
   //Imprimimos las reglas de produccion
-  //Primero el axioma
-  fich << S_ << " -> ";
-/*  for (int i = 0; i < P_.size(); i++) {
-    if (get<0>(P_[i]) != S_) continue; //Buscamos el axioma
-    int cont = 0;
-    for (pair<char,char> pair : get<1>(P_[i])) {
-      fich << get<0>(pair);
-      if (get<0>(pair) != '~') fich << get<1>(pair);
-      fich << (++cont < get<1>(P_[i]).size() ? " | " : "");
-    }
-  }*/
-  fich << "\n";
-
-  //Las demas reglas
   for (int i = 0; i < P_.size(); i++) {
-    if (get<0>(P_[i]) == S_) continue; //Buscamos el axioma
-    fich << get<0>(P_[i]) << " -> ";
-    int cont = 0;
-  /*  for (pair<char,char> pair : get<1>(P_[i])) {
-      fich << get<0>(pair);
-      if (get<0>(pair) != '~') fich << get<1>(pair);
-      fich << (++cont < get<1>(P_[i]).size() ? " | " : "");
-    }*/
-    fich << "\n";
+      fich << get<0>(P_[i]) << " -> ";
+      int cont = 0;
+      for (std::string str : get<1>(P_[i])) {
+        fich << str << (++cont < get<1>(P_[i]).size() ? "|" : "");
+      }
+      fich << "\n";
   }
 }
 
@@ -211,7 +194,6 @@ void GR::delete_unit_productions (void) {
 
   //Modificamos los prototipos resultantes
   vector<pair<char,set<std::string> > > last_P;
-  last_P = P_;
   for (int i = 0; i < P_.size(); i++) {
     set<std::string> set_str = get<1>(P_[i]);
     for (pair<char,char> pair : H) {
@@ -276,6 +258,7 @@ void GR::delete_empty_productions (void) {
 }
 
 void GR::delete_useless_elements (void) {
+  //Etapa 1
   set<char> V;
   for (int i = 0; i < P_.size(); i++) {
     if (get<1>(P_[i]).empty()) continue;
@@ -304,7 +287,6 @@ void GR::delete_useless_elements (void) {
         for (int k = 0; k < str.length(); k++) {
           if (V_.find(str[k]) != V_.end()) {
             if (V.find(str[k]) == V.end()) {
-              std::cout << "No es valida la produccion " << str << "\n";
               valid = false;
               break;
             }
@@ -333,40 +315,71 @@ void GR::delete_useless_elements (void) {
     }
   }
 
-  //Mostramos los elementos de V tras la etapa 1
-  std::cout << "Tras la etapa 1:\n";
-  int cont = 0;
-  for (char c : V) {
-    std::cout << c << (++cont < V.size() ? "," : "");
-  }
-  std::cout << "\n";
+  //Empezamos con la etapa 2
+  set<char> J, alph; V.clear();
+  J.insert('S');
+  V.insert('S');
 
-  //Mostramos los elementos de V tras la etapa 2
-  /*std::cout << "Tras la etapa 2:\n";
-  cont = 0;
-  for (char c : V) {
-    std::cout << c << (++cont < V.size() ? "," : "");
+  while (!J.empty()) {
+    J.erase(J.begin());
+    for (int i = 0; i < P_.size(); i++) {
+      for (std::string str : get<1>(P_[i])) {
+        set<char> no_terminal;
+        for (int k = 0; k < str.length(); k++) {
+          if (alphabet_.find(str[k]) != alphabet_.end()) {
+            alph.insert(str[k]);
+          } else {
+            no_terminal.insert(str[k]);
+          }
+        }
+        for (char c : no_terminal) {
+          if (V.find(c) == V.end()) {
+            J.insert(c);
+            V.insert(c);
+          }
+        }
+      }
+    }
   }
-  std::cout << "\n";*/
 
-  //Mostramos el resultado
-  write(std::cout);
+  //Eliminamos los no terminales de V_ que no esten en V y todos los terminales que no esten en alph
+  V_ = V; alphabet_ = alph;
+
+  //Eliminamos los prototipos de los simbolos no terminales
+  vector<std::pair<char,std::set<std::string> > > P;
+  P.resize(V_.size());
+  int k = 0;
+  for (int i = 0; i < P_.size(); i++) {
+    if (V_.find(get<0>(P_[i])) != V_.end()) {
+      P[k++] = P_[i];
+    }
+  }
+  P_ = P;
+
+  //Eliminamos todas las producciones donde aparezca una variable o simbolo de los eliminados
+  for (int i = 0; i < P_.size(); i++) {
+    for (std::string str : get<1>(P_[i])) {
+      bool valid = true;
+      for (int k = 0; k < str.length(); k++) {
+        if ((int)str[k] >= 65 && (int)str[k] <= 90) { //Si esta entre esos valores es un simbolo no terminal
+          if (V_.find(str[k]) == V_.end()) {
+            valid = false;
+            break;
+          }
+        } else if ((int)str[k] >= 97 && (int)str[k] <= 122) { //Es un simbolo terminal
+          if (alph.find(str[k]) == alph.end()) {
+            valid = false;
+            break;
+          }
+        }
+      }
+      if (!valid) get<1>(P_[i]).erase(str);
+    }
+  }
 }
 
 const set<char> GR::alphabet (void) {
   return alphabet_;
-}
-
-ostream& GR::write (ostream& os) {
-  for (int i = 0; i < P_.size(); i++) {
-    os << get<0>(P_[i]) << " -> ";
-    int cont = 0;
-    for (std::string str : get<1>(P_[i])) {
-      os << str << (++cont < get<1>(P_[i]).size() ? "|" : "");
-    }
-    os << '\n';
-  }
-  return os;
 }
 
 set<string> GR::split_prototype (const string& s) {
@@ -379,6 +392,15 @@ set<string> GR::split_prototype (const string& s) {
       aux.clear();
       i++;
     }
+  }
+  return result;
+}
+
+char GR::valid_letter (void) {
+  char result;
+  for (int i = 65; i <= 90; i++) {
+    result = i;
+    if (V_.find(result) == V_.end()) break;
   }
   return result;
 }

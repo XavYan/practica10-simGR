@@ -1,0 +1,6 @@
+2
+a b 
+2
+S A 
+S -> Aa|ab|b
+A -> ab|b

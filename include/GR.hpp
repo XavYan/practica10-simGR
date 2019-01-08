@@ -85,15 +85,8 @@ public:
 
   const set<char> alphabet (void);
 
-  /**
-   * @brief Escribe la gramatica la salida indicada por parametro
-   * @param os Salida donde escribir. Puede ser std::cout como cualquier fichero.
-   * @return elemento solicitado por parametro
-   */
-
-  ostream& write (ostream& os);
-
 private:
   set<string> split_prototype (const string& s);
+  char valid_letter (void);
 
 };
