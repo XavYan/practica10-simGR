@@ -1,0 +1,7 @@
+2
+a b 
+3
+S A B 
+S -> AA|AAA|ABa|Aa|a
+A -> ABa|Aa|a
+B -> ABa|Aa|Ab

@@ -1,0 +1,10 @@
+2
+a b
+6
+S A B C D E
+S -> A|AA|AAA
+A -> ABa|ACa|a
+B -> ABa|Ab|~
+C -> Cab|CC
+D -> CD|CdCEa
+E ->

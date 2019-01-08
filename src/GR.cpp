@@ -161,6 +161,7 @@ void GR::delete_unit_productions (void) {
   for (int i = 0; i < P_.size(); i++) {
     pair<char,char> pair;
     for (std::string str : get<1>(P_[i])) {
+      if (str == "~") continue;
       if (str.size() == 1 && V_.find(str[0]) != V_.end()) {
         get<0>(pair) = get<0>(P_[i]);
         get<1>(pair) = str[0];
@@ -188,6 +189,7 @@ void GR::delete_unit_productions (void) {
     for (int i = 0; i < P_.size(); i++) {
       if (get<0>(P_[i]) == get<0>(pair)) {
         for (std::string str : get<1>(P_[i])) {
+          if (str == "~") continue;
           if (str[0] == get<1>(pair)) {
             get<1>(P_[i]).erase(str);
             break;
@@ -264,6 +266,7 @@ void GR::delete_empty_productions (void) {
 }
 
 void GR::delete_useless_elements (void) {
+
   //Etapa 1
   set<char> V;
   for (int i = 0; i < P_.size(); i++) {
@@ -271,16 +274,19 @@ void GR::delete_useless_elements (void) {
     bool valid;
     for (std::string str : get<1>(P_[i])) {
       valid = true;
-      for (int k = 0; k < str.length(); k++) {
-        if (V_.find(str[k]) != V_.end()) {
-          valid = false;
-          break;
+      if (str != "~") {
+        for (int k = 0; k < str.length(); k++) {
+          if (V_.find(str[k]) != V_.end()) {
+            valid = false;
+            break;
+          }
         }
       }
       if (valid) break;
     }
     if (valid) V.insert(get<0>(P_[i]));
   }
+
 
   set<char> last_V;
   while (last_V != V) {
@@ -289,6 +295,7 @@ void GR::delete_useless_elements (void) {
       if (get<1>(P_[i]).empty()) continue;
       bool valid;
       for (std::string str : get<1>(P_[i])) {
+        if (str == "~") continue;
         valid = true;
         for (int k = 0; k < str.length(); k++) {
           if (V_.find(str[k]) != V_.end()) {
@@ -312,6 +319,7 @@ void GR::delete_useless_elements (void) {
   //Eliminamos los prototipos que incluyan algun elemento de los eliminados
   for (int i = 0; i < P_.size(); i++) {
     for (std::string str : get<1>(P_[i])) {
+      if (str == "~") continue;
       for (int k = 0; k < str.length(); k++) {
         if (V_.find(str[k]) == V_.end() && alphabet_.find(str[k]) == alphabet_.end()) {
           get<1>(P_[i]).erase(str);
@@ -330,6 +338,7 @@ void GR::delete_useless_elements (void) {
     J.erase(J.begin());
     for (int i = 0; i < P_.size(); i++) {
       for (std::string str : get<1>(P_[i])) {
+        if (str == "~") continue;
         set<char> no_terminal;
         for (int k = 0; k < str.length(); k++) {
           if (alphabet_.find(str[k]) != alphabet_.end()) {
@@ -365,6 +374,7 @@ void GR::delete_useless_elements (void) {
   //Eliminamos todas las producciones donde aparezca una variable o simbolo de los eliminados
   for (int i = 0; i < P_.size(); i++) {
     for (std::string str : get<1>(P_[i])) {
+      if (str == "~") continue;
       bool valid = true;
       for (int k = 0; k < str.length(); k++) {
         if ((int)str[k] >= 65 && (int)str[k] <= 90) { //Si esta entre esos valores es un simbolo no terminal
