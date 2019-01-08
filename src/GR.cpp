@@ -2,6 +2,12 @@
 
 
 GR::GR (void) : alphabet_(), V_(), S_(), P_() {}
+GR::GR (GR& gr) : alphabet_(), V_(), S_(), P_() {
+  alphabet_ = gr.alphabet();
+  V_ = gr.no_terminal_symbols();
+  S_ = gr.init();
+  P_ = gr.prototype();
+}
 GR::GR (const string& nombreFichero, bool& errorApertura) {
   errorApertura = 0;
   if (nombreFichero.rfind(".dfa") != string::npos) {
@@ -382,6 +388,18 @@ const set<char> GR::alphabet (void) {
   return alphabet_;
 }
 
+const set<char> GR::no_terminal_symbols (void) {
+  return V_;
+}
+
+const char GR::init (void) {
+  return S_;
+}
+
+const vector<pair<char,set<string> > > GR::prototype (void) {
+  return P_;
+}
+
 set<string> GR::split_prototype (const string& s) {
   set<string> result;
   string aux = "";
@@ -392,15 +410,6 @@ set<string> GR::split_prototype (const string& s) {
       aux.clear();
       i++;
     }
-  }
-  return result;
-}
-
-char GR::valid_letter (void) {
-  char result;
-  for (int i = 65; i <= 90; i++) {
-    result = i;
-    if (V_.find(result) == V_.end()) break;
   }
   return result;
 }

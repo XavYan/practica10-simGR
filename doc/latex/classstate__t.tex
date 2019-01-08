@@ -1,0 +1,239 @@
+\hypertarget{classstate__t}{}\section{state\+\_\+t Class Reference}
+\label{classstate__t}\index{state\+\_\+t@{state\+\_\+t}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classstate__t_a424022379fa10074d6871d6123c8f320}{state\+\_\+t} (const unsigned \hyperlink{classstate__t_ade808c541a78e337c021020842e3c21d}{id}=-\/1, const bool accept=false)
+\begin{DoxyCompactList}\small\item\em Constructor que crea el estado. \end{DoxyCompactList}\item 
+\hyperlink{classstate__t_a0927d11d7e1113c51d090e7261c41ed3}{state\+\_\+t} (const \hyperlink{classstate__t}{state\+\_\+t} \&state)
+\begin{DoxyCompactList}\small\item\em Constructor copia. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate__t_af27723c21f5cbdbdc237e4bd7aaff2ed}\label{classstate__t_af27723c21f5cbdbdc237e4bd7aaff2ed}} 
+\hyperlink{classstate__t_af27723c21f5cbdbdc237e4bd7aaff2ed}{$\sim$state\+\_\+t} (void)
+\begin{DoxyCompactList}\small\item\em Destructor de la clase estado (\hyperlink{classstate__t}{state\+\_\+t}) \end{DoxyCompactList}\item 
+const unsigned \hyperlink{classstate__t_ade808c541a78e337c021020842e3c21d}{id} (void) const
+\begin{DoxyCompactList}\small\item\em Devuelve el ID del estado. \end{DoxyCompactList}\item 
+set$<$ pair$<$ char, unsigned $>$ $>$ \hyperlink{classstate__t_a2ab5aaf45f890ade849fc87a0da80f6a}{get\+Next} (void) const
+\begin{DoxyCompactList}\small\item\em Devuelve el conjunto de aristas del estado. \end{DoxyCompactList}\item 
+const bool \hyperlink{classstate__t_a83874dc98292ca29be83680dee6f9456}{is\+\_\+accept} (void) const
+\begin{DoxyCompactList}\small\item\em Devuelve un booleano inidicando si el estado es de aceptacion o no. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classstate__t_a716e1078c9486ebb9686dfc97d5749c7}{find\+\_\+by\+\_\+letter} (const char c)
+\begin{DoxyCompactList}\small\item\em Devuelve el puntero que contiene dicha letra. Usado para transitar entre los estados. \end{DoxyCompactList}\item 
+void \hyperlink{classstate__t_a8a18ea542fd131b22dfee5897caab79e}{insert\+\_\+pair} (const char symbol, const unsigned \hyperlink{classstate__t_ade808c541a78e337c021020842e3c21d}{id})
+\begin{DoxyCompactList}\small\item\em Inserta una nueva arista. \end{DoxyCompactList}\item 
+void \hyperlink{classstate__t_a541e80fbf886c337d53c0e5614f0c38b}{new\+\_\+id} (const unsigned \&\hyperlink{classstate__t_ade808c541a78e337c021020842e3c21d}{id})
+\begin{DoxyCompactList}\small\item\em Modifica el ID actual del estado. \end{DoxyCompactList}\item 
+ostream \& \hyperlink{classstate__t_a4cbecc58710974534b8f1dc0592b9ae1}{dbg\+\_\+write} (void) const
+\begin{DoxyCompactList}\small\item\em Imprime por pantalla el estado y sus conexiones en un formato legible. \end{DoxyCompactList}\item 
+const bool \hyperlink{classstate__t_aef60c051e68f523c809033f2e9bdd202}{operator$<$} (const \hyperlink{classstate__t}{state\+\_\+t} state) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador \textquotesingle{}$<$\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file state\+\_\+t.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classstate__t_a424022379fa10074d6871d6123c8f320}\label{classstate__t_a424022379fa10074d6871d6123c8f320}} 
+\index{state\+\_\+t@{state\+\_\+t}!state\+\_\+t@{state\+\_\+t}}
+\index{state\+\_\+t@{state\+\_\+t}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{state\+\_\+t()}{state\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily state\+\_\+t\+::state\+\_\+t (\begin{DoxyParamCaption}\item[{const unsigned}]{id = {\ttfamily -\/1},  }\item[{const bool}]{accept = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Constructor que crea el estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del estado, por defecto -\/1 \\
+\hline
+{\em accept} & Indica si el estado es de aceptacion o no. Por defecto false \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 3 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_a0927d11d7e1113c51d090e7261c41ed3}\label{classstate__t_a0927d11d7e1113c51d090e7261c41ed3}} 
+\index{state\+\_\+t@{state\+\_\+t}!state\+\_\+t@{state\+\_\+t}}
+\index{state\+\_\+t@{state\+\_\+t}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{state\+\_\+t()}{state\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily state\+\_\+t\+::state\+\_\+t (\begin{DoxyParamCaption}\item[{const \hyperlink{classstate__t}{state\+\_\+t} \&}]{state }\end{DoxyParamCaption})}
+
+
+
+Constructor copia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & estado donde se copian los atributos \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4 of file state\+\_\+t.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classstate__t_a4cbecc58710974534b8f1dc0592b9ae1}\label{classstate__t_a4cbecc58710974534b8f1dc0592b9ae1}} 
+\index{state\+\_\+t@{state\+\_\+t}!dbg\+\_\+write@{dbg\+\_\+write}}
+\index{dbg\+\_\+write@{dbg\+\_\+write}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{dbg\+\_\+write()}{dbg\_write()}}
+{\footnotesize\ttfamily ostream \& state\+\_\+t\+::dbg\+\_\+write (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Imprime por pantalla el estado y sus conexiones en un formato legible. 
+
+\begin{DoxyReturn}{Returns}
+Salida donde se escribio 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_a716e1078c9486ebb9686dfc97d5749c7}\label{classstate__t_a716e1078c9486ebb9686dfc97d5749c7}} 
+\index{state\+\_\+t@{state\+\_\+t}!find\+\_\+by\+\_\+letter@{find\+\_\+by\+\_\+letter}}
+\index{find\+\_\+by\+\_\+letter@{find\+\_\+by\+\_\+letter}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{find\+\_\+by\+\_\+letter()}{find\_by\_letter()}}
+{\footnotesize\ttfamily unsigned state\+\_\+t\+::find\+\_\+by\+\_\+letter (\begin{DoxyParamCaption}\item[{const char}]{c }\end{DoxyParamCaption})}
+
+
+
+Devuelve el puntero que contiene dicha letra. Usado para transitar entre los estados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caracter que se usa para encontrar la arista por la que transita \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ID del estado al que se apunta a traves de la arista 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_a2ab5aaf45f890ade849fc87a0da80f6a}\label{classstate__t_a2ab5aaf45f890ade849fc87a0da80f6a}} 
+\index{state\+\_\+t@{state\+\_\+t}!get\+Next@{get\+Next}}
+\index{get\+Next@{get\+Next}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+Next()}{getNext()}}
+{\footnotesize\ttfamily set$<$ pair$<$ char, unsigned $>$ $>$ state\+\_\+t\+::get\+Next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Devuelve el conjunto de aristas del estado. 
+
+\begin{DoxyReturn}{Returns}
+Conjunto de aristas del estado 
+\end{DoxyReturn}
+
+
+Definition at line 11 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_ade808c541a78e337c021020842e3c21d}\label{classstate__t_ade808c541a78e337c021020842e3c21d}} 
+\index{state\+\_\+t@{state\+\_\+t}!id@{id}}
+\index{id@{id}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily const unsigned state\+\_\+t\+::id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Devuelve el ID del estado. 
+
+\begin{DoxyReturn}{Returns}
+ID del estado 
+\end{DoxyReturn}
+
+
+Definition at line 7 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_a8a18ea542fd131b22dfee5897caab79e}\label{classstate__t_a8a18ea542fd131b22dfee5897caab79e}} 
+\index{state\+\_\+t@{state\+\_\+t}!insert\+\_\+pair@{insert\+\_\+pair}}
+\index{insert\+\_\+pair@{insert\+\_\+pair}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{insert\+\_\+pair()}{insert\_pair()}}
+{\footnotesize\ttfamily void state\+\_\+t\+::insert\+\_\+pair (\begin{DoxyParamCaption}\item[{const char}]{symbol,  }\item[{const unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Inserta una nueva arista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & Simbolo de transicion \\
+\hline
+{\em id} & ID del estado al que transita \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 27 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_a83874dc98292ca29be83680dee6f9456}\label{classstate__t_a83874dc98292ca29be83680dee6f9456}} 
+\index{state\+\_\+t@{state\+\_\+t}!is\+\_\+accept@{is\+\_\+accept}}
+\index{is\+\_\+accept@{is\+\_\+accept}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{is\+\_\+accept()}{is\_accept()}}
+{\footnotesize\ttfamily const bool state\+\_\+t\+::is\+\_\+accept (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Devuelve un booleano inidicando si el estado es de aceptacion o no. 
+
+\begin{DoxyReturn}{Returns}
+Booleano indicando si el estado es de aceptacion 
+\end{DoxyReturn}
+
+
+Definition at line 15 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_a541e80fbf886c337d53c0e5614f0c38b}\label{classstate__t_a541e80fbf886c337d53c0e5614f0c38b}} 
+\index{state\+\_\+t@{state\+\_\+t}!new\+\_\+id@{new\+\_\+id}}
+\index{new\+\_\+id@{new\+\_\+id}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{new\+\_\+id()}{new\_id()}}
+{\footnotesize\ttfamily void state\+\_\+t\+::new\+\_\+id (\begin{DoxyParamCaption}\item[{const unsigned \&}]{id }\end{DoxyParamCaption})}
+
+
+
+Modifica el ID actual del estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID nuevo del estado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file state\+\_\+t.\+cpp.
+
+\mbox{\Hypertarget{classstate__t_aef60c051e68f523c809033f2e9bdd202}\label{classstate__t_aef60c051e68f523c809033f2e9bdd202}} 
+\index{state\+\_\+t@{state\+\_\+t}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!state\+\_\+t@{state\+\_\+t}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily const bool state\+\_\+t\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classstate__t}{state\+\_\+t}}]{state }\end{DoxyParamCaption}) const}
+
+
+
+Sobrecarga del operador \textquotesingle{}$<$\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Estado que se compara con el actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Booleano que indica el resultado de la comparacion 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file state\+\_\+t.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{state__t_8hpp}{state\+\_\+t.\+hpp}\item 
+src/state\+\_\+t.\+cpp\end{DoxyCompactItemize}

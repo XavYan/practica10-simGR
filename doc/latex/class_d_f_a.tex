@@ -1,0 +1,290 @@
+\hypertarget{class_d_f_a}{}\section{D\+FA Class Reference}
+\label{class_d_f_a}\index{D\+FA@{D\+FA}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_d_f_a_a22147c876a89b6342512b13b20dd5fcd}\label{class_d_f_a_a22147c876a89b6342512b13b20dd5fcd}} 
+\hyperlink{class_d_f_a_a22147c876a89b6342512b13b20dd5fcd}{D\+FA} (void)
+\begin{DoxyCompactList}\small\item\em Constructor del \hyperlink{class_d_f_a}{D\+FA} por defecto. Crea un \hyperlink{class_d_f_a}{D\+FA} vacío, sin estados, y el ID del estado inicial se pone a -\/1. \end{DoxyCompactList}\item 
+\hyperlink{class_d_f_a_a58748588a492bf8c3f5dd9bb1310aa41}{D\+FA} (const set$<$ \hyperlink{classstate__t}{state\+\_\+t} $>$ \&states)
+\begin{DoxyCompactList}\small\item\em Constructor de un \hyperlink{class_d_f_a}{D\+FA} al que se le pasa un conjunto de estados ya definidos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_d_f_a_aa6398a02d0f2d3a57cee0c7d8b3ec9e1}\label{class_d_f_a_aa6398a02d0f2d3a57cee0c7d8b3ec9e1}} 
+\hyperlink{class_d_f_a_aa6398a02d0f2d3a57cee0c7d8b3ec9e1}{$\sim$\+D\+FA} (void)
+\begin{DoxyCompactList}\small\item\em Destructor del \hyperlink{class_d_f_a}{D\+FA}. \end{DoxyCompactList}\item 
+const unsigned \hyperlink{class_d_f_a_a97e39f09fca7cbe4d2674797b0fdaabc}{init} (void)
+\begin{DoxyCompactList}\small\item\em Devuelve el ID del estado inicial. \end{DoxyCompactList}\item 
+const unsigned \hyperlink{class_d_f_a_a60333433beecab40b2e6eb8874de8524}{size} (void)
+\begin{DoxyCompactList}\small\item\em Devuelve el numero de estados del automata. \end{DoxyCompactList}\item 
+const bool \hyperlink{class_d_f_a_a165a6e75da0c003a78ddf437ef26169e}{empty} (void)
+\begin{DoxyCompactList}\small\item\em Comprueba si el automata no tiene estados. \end{DoxyCompactList}\item 
+set$<$ \hyperlink{classstate__t}{state\+\_\+t} $>$ \hyperlink{class_d_f_a_a4fd523c42b2981f0353d9a3df1771d9e}{get\+States} (void)
+\begin{DoxyCompactList}\small\item\em Devuelve una copia del conjunto de estados del \hyperlink{class_d_f_a}{D\+FA}. \end{DoxyCompactList}\item 
+void \hyperlink{class_d_f_a_a31d1ae734a752f28753d5fa3031c4f0c}{create\+\_\+dfa} (const char $\ast$nombre\+Fichero, bool \&error\+Apertura)
+\begin{DoxyCompactList}\small\item\em Crea el \hyperlink{class_d_f_a}{D\+FA}. \end{DoxyCompactList}\item 
+void \hyperlink{class_d_f_a_a06e28de0df3c54afe35ecebe60e88484}{create\+\_\+dfa} (const set$<$ set$<$ \hyperlink{classstate__t}{state\+\_\+t} $>$ $>$ \&OM)
+\begin{DoxyCompactList}\small\item\em Crea el \hyperlink{class_d_f_a}{D\+FA}. Version adaptada para crear el \hyperlink{class_d_f_a}{D\+FA} tras la minimizacion del automata. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_d_f_a_a7b3b402a2383507bc7836a8fa8af9371}\label{class_d_f_a_a7b3b402a2383507bc7836a8fa8af9371}} 
+void \hyperlink{class_d_f_a_a7b3b402a2383507bc7836a8fa8af9371}{show\+\_\+chain\+\_\+result} (void)
+\begin{DoxyCompactList}\small\item\em Muestra el resultado de la cadena analizada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_d_f_a_a311a5c043b5d11ea6ed4f34b8a901310}\label{class_d_f_a_a311a5c043b5d11ea6ed4f34b8a901310}} 
+void \hyperlink{class_d_f_a_a311a5c043b5d11ea6ed4f34b8a901310}{show\+\_\+dead\+\_\+states} (void)
+\begin{DoxyCompactList}\small\item\em Muestra los estados de muerte del automata. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_d_f_a_a3f03ba04e1130dafc0a62a101ecec61a}\label{class_d_f_a_a3f03ba04e1130dafc0a62a101ecec61a}} 
+void \hyperlink{class_d_f_a_a3f03ba04e1130dafc0a62a101ecec61a}{show\+\_\+alphabet} (void)
+\begin{DoxyCompactList}\small\item\em Muestra el alfabeto que se ha utilizado para la deficion del automata. \end{DoxyCompactList}\item 
+const set$<$ char $>$ \hyperlink{class_d_f_a_a0884e79fd0a48a42e49fe7854a19628d}{alphabet} (void)
+\begin{DoxyCompactList}\small\item\em Devuelve el alfabeto que usa el automata. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_d_f_a_ab17185eaa4d96f9822bab514372abdd9}\label{class_d_f_a_ab17185eaa4d96f9822bab514372abdd9}} 
+void \hyperlink{class_d_f_a_ab17185eaa4d96f9822bab514372abdd9}{min\+D\+FA} (void)
+\begin{DoxyCompactList}\small\item\em Minimiza el \hyperlink{class_d_f_a}{D\+FA}. \end{DoxyCompactList}\item 
+void \hyperlink{class_d_f_a_ac614efadfde86fde0b0ab45f2c9c2e5e}{save} (const char $\ast$nombre\+Fichero, bool \&error)
+\begin{DoxyCompactList}\small\item\em Guarda la informacion del automata en un fichero. \end{DoxyCompactList}\item 
+ostream \& \hyperlink{class_d_f_a_ac7f9b36f9c298f1dfd53c4bdf395c1d5}{dbg\+\_\+write} (void) const
+\begin{DoxyCompactList}\small\item\em Imprime por consola el automata, en un formato mas legible por el ser humano. \end{DoxyCompactList}\item 
+ostream \& \hyperlink{class_d_f_a_a453bbd313adb90e3615694aad833b014}{write} (void) const
+\begin{DoxyCompactList}\small\item\em Imprime por consola en formato fichero. \end{DoxyCompactList}\item 
+ostream \& \hyperlink{class_d_f_a_aec27d0774ad67c7c29a5679e938fab5d}{write} (ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Imprime en formato fichero por la salida indicada como parametro. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_d_f_a_a2abcdde01c9833f97b99c9d1c7e739aa}\label{class_d_f_a_a2abcdde01c9833f97b99c9d1c7e739aa}} 
+void \hyperlink{class_d_f_a_a2abcdde01c9833f97b99c9d1c7e739aa}{clear} (void)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Formatea el automata\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 20 of file D\+F\+A.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_d_f_a_a58748588a492bf8c3f5dd9bb1310aa41}\label{class_d_f_a_a58748588a492bf8c3f5dd9bb1310aa41}} 
+\index{D\+FA@{D\+FA}!D\+FA@{D\+FA}}
+\index{D\+FA@{D\+FA}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{D\+F\+A()}{DFA()}}
+{\footnotesize\ttfamily D\+F\+A\+::\+D\+FA (\begin{DoxyParamCaption}\item[{const set$<$ \hyperlink{classstate__t}{state\+\_\+t} $>$ \&}]{states }\end{DoxyParamCaption})}
+
+
+
+Constructor de un \hyperlink{class_d_f_a}{D\+FA} al que se le pasa un conjunto de estados ya definidos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em states} & Conjunto de estados del automata \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 6 of file D\+F\+A.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_d_f_a_a0884e79fd0a48a42e49fe7854a19628d}\label{class_d_f_a_a0884e79fd0a48a42e49fe7854a19628d}} 
+\index{D\+FA@{D\+FA}!alphabet@{alphabet}}
+\index{alphabet@{alphabet}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{alphabet()}{alphabet()}}
+{\footnotesize\ttfamily const set$<$ char $>$ D\+F\+A\+::alphabet (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve el alfabeto que usa el automata. 
+
+\begin{DoxyReturn}{Returns}
+Retorna el alfabeto 
+\end{DoxyReturn}
+
+
+Definition at line 181 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_a31d1ae734a752f28753d5fa3031c4f0c}\label{class_d_f_a_a31d1ae734a752f28753d5fa3031c4f0c}} 
+\index{D\+FA@{D\+FA}!create\+\_\+dfa@{create\+\_\+dfa}}
+\index{create\+\_\+dfa@{create\+\_\+dfa}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{create\+\_\+dfa()}{create\_dfa()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void D\+F\+A\+::create\+\_\+dfa (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Fichero,  }\item[{bool \&}]{error\+Apertura }\end{DoxyParamCaption})}
+
+
+
+Crea el \hyperlink{class_d_f_a}{D\+FA}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Fichero} & Nombre del fichero de lectura \\
+\hline
+{\em error\+Apertura} & Valor que devuelve 1 si ocurre algun error al abrir el archivo, 0 en caso contrario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 26 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_a06e28de0df3c54afe35ecebe60e88484}\label{class_d_f_a_a06e28de0df3c54afe35ecebe60e88484}} 
+\index{D\+FA@{D\+FA}!create\+\_\+dfa@{create\+\_\+dfa}}
+\index{create\+\_\+dfa@{create\+\_\+dfa}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{create\+\_\+dfa()}{create\_dfa()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void D\+F\+A\+::create\+\_\+dfa (\begin{DoxyParamCaption}\item[{const set$<$ set$<$ \hyperlink{classstate__t}{state\+\_\+t} $>$ $>$ \&}]{OM }\end{DoxyParamCaption})}
+
+
+
+Crea el \hyperlink{class_d_f_a}{D\+FA}. Version adaptada para crear el \hyperlink{class_d_f_a}{D\+FA} tras la minimizacion del automata. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em OM} & Conjunto que almacena los conjuntos comunes entre si \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 78 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_ac7f9b36f9c298f1dfd53c4bdf395c1d5}\label{class_d_f_a_ac7f9b36f9c298f1dfd53c4bdf395c1d5}} 
+\index{D\+FA@{D\+FA}!dbg\+\_\+write@{dbg\+\_\+write}}
+\index{dbg\+\_\+write@{dbg\+\_\+write}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{dbg\+\_\+write()}{dbg\_write()}}
+{\footnotesize\ttfamily ostream \& D\+F\+A\+::dbg\+\_\+write (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Imprime por consola el automata, en un formato mas legible por el ser humano. 
+
+\begin{DoxyReturn}{Returns}
+Salida donde se ha escrito 
+\end{DoxyReturn}
+
+
+Definition at line 224 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_a165a6e75da0c003a78ddf437ef26169e}\label{class_d_f_a_a165a6e75da0c003a78ddf437ef26169e}} 
+\index{D\+FA@{D\+FA}!empty@{empty}}
+\index{empty@{empty}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily const bool D\+F\+A\+::empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Comprueba si el automata no tiene estados. 
+
+\begin{DoxyReturn}{Returns}
+\textquotesingle{}1\textquotesingle{} si el automata no tiene estados, \textquotesingle{}0\textquotesingle{} en caso contrario 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_a4fd523c42b2981f0353d9a3df1771d9e}\label{class_d_f_a_a4fd523c42b2981f0353d9a3df1771d9e}} 
+\index{D\+FA@{D\+FA}!get\+States@{get\+States}}
+\index{get\+States@{get\+States}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{get\+States()}{getStates()}}
+{\footnotesize\ttfamily set$<$ \hyperlink{classstate__t}{state\+\_\+t} $>$ D\+F\+A\+::get\+States (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve una copia del conjunto de estados del \hyperlink{class_d_f_a}{D\+FA}. 
+
+\begin{DoxyReturn}{Returns}
+Conjunto de estados del \hyperlink{class_d_f_a}{D\+FA} 
+\end{DoxyReturn}
+
+
+Definition at line 22 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_a97e39f09fca7cbe4d2674797b0fdaabc}\label{class_d_f_a_a97e39f09fca7cbe4d2674797b0fdaabc}} 
+\index{D\+FA@{D\+FA}!init@{init}}
+\index{init@{init}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily const unsigned D\+F\+A\+::init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve el ID del estado inicial. 
+
+\begin{DoxyReturn}{Returns}
+Valor ID del estado inicial 
+\end{DoxyReturn}
+
+
+Definition at line 10 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_ac614efadfde86fde0b0ab45f2c9c2e5e}\label{class_d_f_a_ac614efadfde86fde0b0ab45f2c9c2e5e}} 
+\index{D\+FA@{D\+FA}!save@{save}}
+\index{save@{save}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void D\+F\+A\+::save (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Fichero,  }\item[{bool \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Guarda la informacion del automata en un fichero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Fichero} & Nombre del fichero donde se va a guardar el automata \\
+\hline
+{\em error} & Indica si ha habido error en la escritura del automata. 1 si ha habido fallo, 0 en caso contrario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 212 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_a60333433beecab40b2e6eb8874de8524}\label{class_d_f_a_a60333433beecab40b2e6eb8874de8524}} 
+\index{D\+FA@{D\+FA}!size@{size}}
+\index{size@{size}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily const unsigned D\+F\+A\+::size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve el numero de estados del automata. 
+
+\begin{DoxyReturn}{Returns}
+Numero de estados del automata 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_a453bbd313adb90e3615694aad833b014}\label{class_d_f_a_a453bbd313adb90e3615694aad833b014}} 
+\index{D\+FA@{D\+FA}!write@{write}}
+\index{write@{write}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostream \& D\+F\+A\+::write (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Imprime por consola en formato fichero. 
+
+\begin{DoxyReturn}{Returns}
+Salida donde se ha escrito 
+\end{DoxyReturn}
+
+
+Definition at line 233 of file D\+F\+A.\+cpp.
+
+\mbox{\Hypertarget{class_d_f_a_aec27d0774ad67c7c29a5679e938fab5d}\label{class_d_f_a_aec27d0774ad67c7c29a5679e938fab5d}} 
+\index{D\+FA@{D\+FA}!write@{write}}
+\index{write@{write}!D\+FA@{D\+FA}}
+\subsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostream \& D\+F\+A\+::write (\begin{DoxyParamCaption}\item[{ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+
+
+Imprime en formato fichero por la salida indicada como parametro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Salida donde se va a escribir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Salida donde se ha escrito 
+\end{DoxyReturn}
+
+
+Definition at line 248 of file D\+F\+A.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{_d_f_a_8hpp}{D\+F\+A.\+hpp}\item 
+src/D\+F\+A.\+cpp\end{DoxyCompactItemize}

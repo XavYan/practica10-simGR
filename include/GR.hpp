@@ -31,6 +31,13 @@ public:
   GR (const string& nombreFichero, bool& errorApertura);
 
 /**
+ * @brief Constructor copia
+ * @param gr Gramatica que se copiara
+ */
+
+  GR (GR& gr);
+
+/**
  * @brief Destructor de la gramatica regular.
  */
 
@@ -85,8 +92,27 @@ public:
 
   const set<char> alphabet (void);
 
+  /**
+   * @brief Devuelve el conjunto de elementos no terminales de la gramatica
+   * @return Conjunto de simbolos no terminales de la gramatica
+   */
+
+  const set<char> no_terminal_symbols (void);
+
+  /**
+   * @brief Devuelve el axioma de la gramatica
+   * @return Axioma de la gramatica
+   */
+
+  const char init (void);
+
+  /**
+   * @brief Devuelve los prototipo de la gramatica
+   * @return Prototipos de la gramatica
+   */
+
+  const vector<pair<char,set<string> > > prototype (void);
+
 private:
   set<string> split_prototype (const string& s);
-  char valid_letter (void);
-
 };

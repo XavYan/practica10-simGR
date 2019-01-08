@@ -1,0 +1,31 @@
+\hypertarget{_d_f_a_8hpp}{}\section{include/\+D\+FA.hpp File Reference}
+\label{_d_f_a_8hpp}\index{include/\+D\+F\+A.\+hpp@{include/\+D\+F\+A.\+hpp}}
+
+
+Clase \hyperlink{class_d_f_a}{D\+FA}.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}state\+\_\+t.\+hpp\char`\"{}}\newline
+Include dependency graph for D\+F\+A.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_d_f_a}{D\+FA}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Clase \hyperlink{class_d_f_a}{D\+FA}. 
+
+Himar Manuel Barquin Carrasco \begin{DoxyDate}{Date}
+11/12/2018 
+\end{DoxyDate}
